@@ -1,0 +1,28 @@
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.botao {
+    background-color: blanchedalmond;
+    color: black;
+    border: 1px solid burlywood;
+    border-radius: 8px;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.botao:hover {
+    background-color:khaki;
+    scale: 105%;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.botao:active {
+    /* background-color:khaki; */
+    scale: 98%;
+    transition: 0.2s;
+}
