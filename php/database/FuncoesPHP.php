@@ -7,6 +7,23 @@ require_once("AutorDAO.php");
  * Funções de teste DAO
  */
 
+function obterDAO($objeto): ?AbstractDAO
+{
+    $dao = NULL;
+    switch($objeto)
+    {
+        case "autor":
+            $dao = AutorDAO::Get();
+            break;
+        case "livros":
+            $dao = LivroDAO::Get();
+            break;
+        default:
+            echo "erro: objeto não reconhecido";
+            break;
+    }
+    return $dao;
+}
 
 
 function executarMetodo(string $metodo, AbstractDAO $dao)
@@ -24,31 +41,9 @@ function executarMetodo(string $metodo, AbstractDAO $dao)
  */
 function acessarObjeto($objeto, $metodo)
 {
-    $dao = NULL;
-    switch($objeto)
-    {
-        case "autor":
-            $dao = AutorDAO::Get();
-            break;
-        case "livros":
-            $dao = LivroDAO::Get();
-            break;
-        default:
-            echo "erro: objeto não reconhecido";
-            return;
-            break;
-    }
-
+    $dao = obterDAO($objeto);
     return json_encode(executarMetodo($metodo, $dao));
-    // switch($metodo)
-    // {
-    //     case "listar":
-    //         // print_r($livrodao->listar());
-    //         return json_encode($dao->listar());
-    //         break;
-    // }
 }
-
 
 
 echo acessarObjeto($_GET["objeto"], $_GET["metodo"]);
