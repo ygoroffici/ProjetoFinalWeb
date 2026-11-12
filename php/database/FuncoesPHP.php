@@ -6,14 +6,15 @@ require_once("AutorDAO.php");
 /**
  * Funções de teste DAO
  */
-function acessarLivros($metodo)
+
+
+
+function executarMetodo(string $metodo, AbstractDAO $dao)
 {
     switch($metodo)
     {
         case "listar":
-            // print_r($livrodao->listar());
-            return json_encode(LivroDAO::pegar()->listar());
-            break;
+            return $dao->listar();
     }
 }
 
@@ -27,10 +28,10 @@ function acessarObjeto($objeto, $metodo)
     switch($objeto)
     {
         case "autor":
-            $dao = AutorDAO::pegar();
+            $dao = AutorDAO::Get();
             break;
         case "livros":
-            $dao = LivroDAO::pegar();
+            $dao = LivroDAO::Get();
             break;
         default:
             echo "erro: objeto não reconhecido";
@@ -38,14 +39,14 @@ function acessarObjeto($objeto, $metodo)
             break;
     }
 
-
-    switch($metodo)
-    {
-        case "listar":
-            // print_r($livrodao->listar());
-            return json_encode($dao->listar());
-            break;
-    }
+    return json_encode(executarMetodo($metodo, $dao));
+    // switch($metodo)
+    // {
+    //     case "listar":
+    //         // print_r($livrodao->listar());
+    //         return json_encode($dao->listar());
+    //         break;
+    // }
 }
 
 

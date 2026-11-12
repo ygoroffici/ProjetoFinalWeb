@@ -2,11 +2,12 @@
 // require_once 'BaseDAO.php';
 require_once 'ConexaoDB.php';
 
-class AutorDAO extends BaseConexaoDB
+class AutorDAO extends AbstractDAO
 {
     private static $instancia = NULL;
-    
-    public static function pegar()
+
+
+    public static function Get()
     {
         if( is_null(self::$instancia) )
         {

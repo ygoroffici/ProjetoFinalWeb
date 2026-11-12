@@ -5,7 +5,7 @@
 // - Todos os DAOs devem herdar dessa classe.
 // - Os DAOs devem possuir um Singleton oferecendo acesso à uma instância da mesma.
 // - Não é possível criar um DAO usando 'new'. O acesso deve-se pelo Singleton.
-abstract class BaseConexaoDB
+abstract class AbstractDAO
 {
     const HOST    = 'localhost';
     const BANCO   = 'biblioteca';
@@ -14,7 +14,9 @@ abstract class BaseConexaoDB
 
     public readonly PDO $pdo;
 
-    
+
+    abstract public static function Get();
+
     protected function __construct()
     {
         $this->pdo = self::conectar();
