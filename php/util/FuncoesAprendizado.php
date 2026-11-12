@@ -1,10 +1,12 @@
 <?php
-require_once("../php_db/LivroDAO.php");
-require_once("../php_utilidades/ferramentas.php");
+require_once("../php/database/LivroDAO.php");
+require_once("../php/util/Helpers.php");
+
 
 $cor1 = "azul";
 $cor2 = "verde";
 $algo = "eae";
+
 
 function digaAlgo()
 {
@@ -22,7 +24,7 @@ function crieCasoNaoTenha()
         Debug::writeHTML("Criei o negocio");
     }
     else {
-        Debug::writeHTML("Criei o negocio");
+        Debug::writeHTML("Ja tava criado o negocio");
     }
 }
 

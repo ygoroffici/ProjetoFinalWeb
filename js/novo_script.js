@@ -2,9 +2,11 @@
 const livrosdiv = document.getElementById("listagem-livros");
 const autoresdiv = document.getElementById("listagem-autores");
 
+const funcoesURL = "../php/database/FuncoesPHP.php";
+
 async function listarLivros()
 {
-    const resposta = await fetch("../php_db/FuncoesPHP.php?objeto=livros&metodo=listar");
+    const resposta = await fetch(`${funcoesURL}?objeto=livros&metodo=listar`);
     const livrosLista = await resposta.json();
 
 
@@ -30,7 +32,7 @@ async function listarLivros()
 
 async function listarAutores()
 {
-    const resposta = await fetch("../php_db/FuncoesPHP.php?objeto=autor&metodo=listar");
+    const resposta = await fetch(`${funcoesURL}?objeto=autor&metodo=listar`);
     const autorLista = await resposta.json();
 
     for (const obj of autorLista)

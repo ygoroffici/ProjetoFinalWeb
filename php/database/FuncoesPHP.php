@@ -2,6 +2,7 @@
 require_once("LivroDAO.php");
 require_once("AutorDAO.php");
 
+
 /**
  * Funções de teste DAO
  */
@@ -16,7 +17,11 @@ function acessarLivros($metodo)
     }
 }
 
-function acessarAutores($objeto, $metodo)
+
+/**
+ * Acessa DAO de $objeto dentro do banco de dados. Depois, realiza $metodo nesse DAO.
+ */
+function acessarObjeto($objeto, $metodo)
 {
     $dao = NULL;
     switch($objeto)
@@ -33,7 +38,7 @@ function acessarAutores($objeto, $metodo)
             break;
     }
 
-    
+
     switch($metodo)
     {
         case "listar":
@@ -45,7 +50,7 @@ function acessarAutores($objeto, $metodo)
 
 
 
-echo acessarAutores($_GET["objeto"], $_GET["metodo"]);
+echo acessarObjeto($_GET["objeto"], $_GET["metodo"]);
 // switch( $_GET["objeto"] )
 // {
 //     $met = $_GET["metodo"];

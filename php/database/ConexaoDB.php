@@ -1,14 +1,20 @@
 <?php
-
 // Classe que permite a conexão com o banco de dados
 // pela propriedade $pdo.
 
-// Todos os DAOS devem herdar dessa classe, e implementar o padrão
-// Singleton para que os usuários tenham acesso no código.
+// - Todos os DAOs devem herdar dessa classe.
+// - Os DAOs devem possuir um Singleton oferecendo acesso à uma instância da mesma.
+// - Não é possível criar um DAO usando 'new'. O acesso deve-se pelo Singleton.
 abstract class BaseConexaoDB
 {
+    const HOST    = 'localhost';
+    const BANCO   = 'biblioteca';
+    const USUARIO = 'root';
+    const SENHA   = '';
+
     public readonly PDO $pdo;
 
+    
     protected function __construct()
     {
         $this->pdo = self::conectar();
@@ -18,13 +24,8 @@ abstract class BaseConexaoDB
     // Responsavel por conectar ao banco de dados
     protected static function conectar()
     {
-        $host    = 'localhost';
-        $banco   = 'biblioteca';
-        $usuario = 'root';
-        $senha   = '';
-    
         try {
-            $pdo = new PDO("mysql:host=$host; dbname=$banco; charset=utf8mb4", $usuario, $senha);
+            $pdo = new PDO("mysql:host=".self::HOST."; dbname=".self::BANCO."; charset=utf8mb4", self::USUARIO, self::SENHA);
     
             // Se der erro no SQL, o PHP lanca uma excecao (fica mais facil de ver o problema)
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

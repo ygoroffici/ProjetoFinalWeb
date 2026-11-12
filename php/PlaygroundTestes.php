@@ -1,6 +1,6 @@
 <?php
 
-require_once("../php_utilidades/aprendizado.php");
+require_once("../php/util/FuncoesAprendizado.php");
 
 ?>
 
@@ -21,11 +21,13 @@ require_once("../php_utilidades/aprendizado.php");
         <div>
             <h3>VVV  Teste  VVV:</h3>
             <?php
-            echo "<p> cor1: ".$cor1."</p>";
-            echo "<p> cor2: ".$cor2."</p>";
-            digaAlgo();
-            crieCasoNaoTenha();
-            crieCasoNaoTenha();
+                Debug::writeHTML("cor1: ".$cor1);
+                Debug::writeHTML("cor2: ".$cor2);
+                // echo "<p> cor1: ".$cor1."</p>";
+                // echo "<p> cor2: ".$cor2."</p>";
+                digaAlgo();
+                crieCasoNaoTenha();
+                crieCasoNaoTenha();
             ?>
         </div>
     </body>

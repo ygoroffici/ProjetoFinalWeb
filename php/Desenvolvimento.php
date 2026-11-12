@@ -25,6 +25,6 @@
             
         </main>
     </body>
-    
+
     <script src="../js/novo_script.js"></script>
 </html>
